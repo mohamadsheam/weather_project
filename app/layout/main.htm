@@ -4,45 +4,55 @@
     </div>
     <div class="card-body">
         <!--search form-->
-        <form action="" ng-submit="fetchData()" novalidate >
+        <form action="" ng-submit="fetchData(city)" novalidate >
             <input type="text" class="form-control" ng-model="city" placeholder="Type your city name and press enter">
             <input type="submit" style="display: none">
         </form>
         <div class="container m-t-1">
-            <div class="col-md-5">
-                <h3>Weather in Mymensingh, BD</h3>
-                <span><img src="" alt="weather icon"> 31C</span><br>
-                <span>{{ main weather }}</span><br>
-                <span>get data at (time)</span>
-                <table class="table table-bordered table-striped m-t-1">
-                    <tr>
-                        <th>Wind</th>
-                        <td>{{data}}</td>
-                    </tr>
-                    <tr>
-                        <th>Cloudiness</th>
-                        <td>Broken clouds</td>
-                    </tr>
-                    <tr>
-                        <th>Pressure</th>
-                        <td>1004 hpa</td>
-                    </tr>
-                    <tr>
-                        <th>Humidity</th>
-                        <td>73 %</td>
-                    </tr>
-                    <tr>
-                        <th>Sunrise</th>
-                        <td>05:10</td>
-                    </tr>
-                    <tr>
-                        <th>Sunset</th>
-                        <td>18:41</td>
-                    </tr>
-                </table>
+            <!--success data-->
+            <div ng-if="data.status == 200">
+                <div class="col-md-5">
+                    <h3>Weather in {{data.city}}, <img ng-src="http://openweathermap.org/images/flags/{{data.country | lowercase}}.png" alt=""> {{data.country}}</h3>
+                    <span>
+                        <img ng-src="http://openweathermap.org/img/wn/{{data.weather_icon}}@2x.png"> {{data.temp}} &#8451;
+                    </span>
+                    <br>
+                    <span> {{data.weather_main}} </span><br>
+                    <span>get data at {{data.currentTime}}</span>
+                    <table class="table table-bordered table-striped m-t-1">
+                        <tr>
+                            <th>Wind</th>
+                            <td>data</td>
+                        </tr>
+                        <tr>
+                            <th>Cloudiness</th>
+                            <td>Broken clouds</td>
+                        </tr>
+                        <tr>
+                            <th>Pressure</th>
+                            <td>1004 hpa</td>
+                        </tr>
+                        <tr>
+                            <th>Humidity</th>
+                            <td>73 %</td>
+                        </tr>
+                        <tr>
+                            <th>Sunrise</th>
+                            <td>{{data.sunrise}}</td>
+                        </tr>
+                        <tr>
+                            <th>Sunset</th>
+                            <td>{{data.sunset}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-7">
+                    <h4>Here will showing chart data</h4>
+                </div>
             </div>
-            <div class="col-md-7">
-                here will showing chart data
+            <!--error data-->
+            <div ng-if="data.status != 200">
+                <h3 class="text-md-center text-danger">  {{data.message | uppercase}}</h3>
             </div>
         </div>
     </div>
