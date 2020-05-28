@@ -13,14 +13,16 @@
             <div ng-if="data.status == 200">
                 <div class="col-md-5">
                     <div class="animated slideInLeft slow">
-                    <h3>Weather in {{data.city}}, <img ng-src="http://openweathermap.org/images/flags/{{data.country | lowercase}}.png" alt=""> {{data.country}}</h3>
-                    <span>
-                        <img ng-src="http://openweathermap.org/img/wn/{{data.weather_icon}}@2x.png"> {{data.temp}} &#8451;
-                    </span>
-                    <br>
-                    <span> {{data.weather_main}} </span><br>
-                    <span>get data at {{data.currentTime}}</span>
+                        <h3>Weather in {{data.city}}, <img ng-src="http://openweathermap.org/images/flags/{{data.country | lowercase}}.png" alt=""> {{data.country}}</h3>
+                        <span>
+                            <img ng-src="http://openweathermap.org/img/wn/{{data.weather_icon}}@2x.png"> {{data.temp}} &#8451;
+                        </span>
+                        <br>
+                        <span> {{data.weather_main}} </span><br>
+                        <span>get data at {{data.currentTime}}</span>
                     </div>
+                </div>
+                <div class="col-md-7">
                     <table class="animated fadeInUp slow table table-bordered table-striped m-t-1">
                         <tr>
                             <th>Wind</th>
@@ -47,9 +49,6 @@
                             <td>{{data.sunset}}</td>
                         </tr>
                     </table>
-                </div>
-                <div class="col-md-7">
-                    <h4>Here will showing chart data</h4>
                 </div>
             </div>
             <!--error data-->
