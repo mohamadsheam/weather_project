@@ -23,7 +23,9 @@ app.value("apiKey", "2494191432201fa79cd1cc06ebeb0139");
 app.controller("searchWeatherCtrl", ["$scope", "$http", "url", "apiKey", function ($scope, $http, url, apiKey) {
     //console.log(url);
     //console.log(apiKey);
+    $scope.loader = false;
     $scope.fetchData = function(city){
+        $scope.loader = true;
         $scope.data = {};
         // build url weather?q={city name}&appid={your api key}
         var api = url + "weather?q=" + city + "&appid="+apiKey ;
@@ -31,13 +33,18 @@ app.controller("searchWeatherCtrl", ["$scope", "$http", "url", "apiKey", functio
             method: "GET",
             url : api
         }).then(function (response) {
+            $scope.loader = false;
             $scope.data.city = city;
             $scope.data.status = response.status;
 
-            $scope.data.temp = (response.data.main.temp - 273.15).toFixed(2);
+            $scope.data.temp = (response.data.main.temp - 273.15).toFixed(1);
             $scope.data.weather_main = response.data.weather[0].main;
             $scope.data.weather_desc = response.data.weather[0].description;
             $scope.data.weather_icon = response.data.weather[0].icon;
+
+            $scope.data.wind = response.data.wind.speed;
+            $scope.data.pressure = response.data.main.pressure;
+            $scope.data.humidity = response.data.main.humidity;
 
             $scope.data.country = response.data.sys.country;
             $scope.data.sunrise = formatTime(response.data.sys.sunrise * 1000);
@@ -46,6 +53,7 @@ app.controller("searchWeatherCtrl", ["$scope", "$http", "url", "apiKey", functio
 
             //console.log($scope.data);
         }, function (reject) {
+            $scope.loader = false;
             $scope.data = reject.data;
         });
 
