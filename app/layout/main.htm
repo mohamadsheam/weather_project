@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-md-center">Weather report</h3>
+    </div>
+    <div class="card-body">
+        <!--search form-->
+        <form action="" ng-submit="fetchData()" novalidate >
+            <input type="text" class="form-control" ng-model="city" placeholder="Type your city name and press enter">
+            <input type="submit" style="display: none">
+        </form>
+        <div class="container m-t-1">
+            <div class="col-md-5">
+                <h3>Weather in Mymensingh, BD</h3>
+                <span><img src="" alt="weather icon"> 31C</span><br>
+                <span>{{ main weather }}</span><br>
+                <span>get data at (time)</span>
+                <table class="table table-bordered table-striped m-t-1">
+                    <tr>
+                        <th>Wind</th>
+                        <td>{{data}}</td>
+                    </tr>
+                    <tr>
+                        <th>Cloudiness</th>
+                        <td>Broken clouds</td>
+                    </tr>
+                    <tr>
+                        <th>Pressure</th>
+                        <td>1004 hpa</td>
+                    </tr>
+                    <tr>
+                        <th>Humidity</th>
+                        <td>73 %</td>
+                    </tr>
+                    <tr>
+                        <th>Sunrise</th>
+                        <td>05:10</td>
+                    </tr>
+                    <tr>
+                        <th>Sunset</th>
+                        <td>18:41</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-7">
+                here will showing chart data
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <p class="text-md-center"><strong>Above data retrieve from <a target="__blank" href="https://openweathermap.org/">openweathermap</a></strong></p>
+    </div>
+</div>
