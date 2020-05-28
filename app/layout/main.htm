@@ -4,14 +4,15 @@
     </div>
     <div class="card-body">
         <!--search form-->
-        <form action="" ng-submit="fetchData(city)" novalidate >
-            <input type="text" class="form-control" ng-model="city" placeholder="Type your city name and press enter">
+        <form action="" ng-submit="fetchData(city)"  >
+            <input type="text" class="form-control" ng-model="city" placeholder="Type your city name and press enter" required>
             <input type="submit" style="display: none">
         </form>
         <div class="container m-t-1">
             <!--success data-->
             <div ng-if="data.status == 200">
                 <div class="col-md-5">
+                    <div class="animated slideInLeft slow">
                     <h3>Weather in {{data.city}}, <img ng-src="http://openweathermap.org/images/flags/{{data.country | lowercase}}.png" alt=""> {{data.country}}</h3>
                     <span>
                         <img ng-src="http://openweathermap.org/img/wn/{{data.weather_icon}}@2x.png"> {{data.temp}} &#8451;
@@ -19,7 +20,8 @@
                     <br>
                     <span> {{data.weather_main}} </span><br>
                     <span>get data at {{data.currentTime}}</span>
-                    <table class="table table-bordered table-striped m-t-1">
+                    </div>
+                    <table class="animated fadeInUp slow table table-bordered table-striped m-t-1">
                         <tr>
                             <th>Wind</th>
                             <td>data</td>
@@ -54,6 +56,12 @@
             <div ng-if="data.status != 200">
                 <h3 class="text-md-center text-danger">  {{data.message | uppercase}}</h3>
             </div>
+
+            <!--add loader-->
+            <div class="text-lg-center" ng-if="loader">
+                <img src="content/image/loader.gif" >
+            </div>
+
         </div>
     </div>
     <div class="card-footer">
