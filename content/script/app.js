@@ -1,5 +1,11 @@
 var app = angular.module("myApp", ['ngRoute']);
 
+app.run(function ($rootScope, $location) {
+    $rootScope.isActive  = function(page){
+        return active = (page === $location.path());
+    }
+});
+
  // configure routing
 app.config(function ($routeProvider) {
     $routeProvider
