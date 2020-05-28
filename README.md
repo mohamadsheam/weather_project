@@ -26,7 +26,7 @@ Simple weather app build with AngularJs as practice purpose. You can use this co
 [CLICK HERE TO DOWNLOAD](https://www.apachefriends.org/download.html) - install it to your pc
 - goto htdocts folder and run this command  from the below
 ```
-git clone https://github.com/mohamadsheam/Admin_Panel.git weather_project
+git clone https://github.com/mohamadsheam/weather_project.git weather_project
 ```
 - [HIT IN THE ADDRESS BAR](http://localhost/weather_project) - http://localhost/weather_project
 
